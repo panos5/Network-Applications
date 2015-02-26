@@ -1,0 +1,519 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+        <meta charset="utf-8">
+		<title>LikeIt</title>
+		
+		<style>
+			html, body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background-image: url("blackwall.jpg");
+			background-size: 100% 100%;
+			}
+			
+			#main
+			{
+			list-style-type: none;
+			}
+			
+			#main li {
+			display:inline-block;
+			list-style-type:none;
+			margin-right:-4px;
+			padding:10px;
+			}
+			
+			
+			
+			#myBody {
+			background-size: 100% 100%;
+			width: 100%;
+			height: 100%;
+			height: auto !important;
+			min-height:100%;
+		}
+		
+		
+		#note_board{
+		
+		margin: auto;
+		
+		position: absolute;
+		top: 0; left: 0; bottom: 0; right: 0;
+		
+		
+		padding-left: 0;
+		padding-right: 0;
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+		width: 1110px;
+		height: 500px;
+		z-index:0;
+		background-image: url("back.png");
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		box-shadow:10px 10px 7px rgba(0,0,0,.2);
+		
+		background-size: 100% 100%;
+		}
+		
+		#myCanvas_1{
+		position: absolute; 	  
+		-moz-transform:rotate(10deg);
+		-moz-transition:-moz-transform .35s linear;
+		-webkit-transform:rotate(10deg);
+		-webkit-transition:-webkit-transform .35s linear;
+		-o-transform:rotate(10deg);
+		-o-transition:-o-transform .35s linear;
+		z-index:3;
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-webkit-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-o-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		box-shadow:10px 10px 7px rgba(0,0,0,.2);
+		border:8px solid white;
+		
+		background-size: 100% 100%;
+		}
+	  	
+		#myCanvas_2{
+		top: -60px;
+		left: -55px;
+		position: absolute; 	  
+		-moz-transform:rotate(-3deg);
+		-moz-transition:-moz-transform .35s linear;
+		-webkit-transform:rotate(-3deg);
+		-webkit-transition:-webkit-transform .35s linear;
+		-o-transform:rotate(-3deg);
+		-o-transition:-o-transform .35s linear;
+		z-index:4;
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-webkit-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-o-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		box-shadow:10px 10px 7px rgba(0,0,0,.2);
+		border:8px solid white;
+		}
+		#myCanvas_3{
+	    top: 10px;
+		left: -77px;
+		position: absolute; 	  
+		-moz-transform:rotate(1deg);
+		-moz-transition:-moz-transform .35s linear;
+		-webkit-transform:rotate(1deg);
+		-webkit-transition:-webkit-transform .35s linear;
+		-o-transform:rotate(1deg);
+		-o-transition:-o-transform .35s linear;
+		z-index:3;
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-webkit-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-o-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		border:8px solid white;
+		}
+		
+		#myCanvas_4{
+	    top: 40px;
+		left: -90px;
+		position: absolute; 	  
+		-moz-transform:rotate(-20deg);
+		-moz-transition:-moz-transform .35s linear;
+		-webkit-transform:rotate(20deg);
+		-webkit-transition:-webkit-transform .35s linear;
+		-o-transform:rotate(20deg);
+		-o-transition:-o-transform .35s linear;
+		z-index:3;
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-webkit-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-o-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		box-shadow:10px 10px 7px rgba(0,0,0,.2);
+		border:8px solid white;
+		z-index:2;
+		}
+		
+		#myCanvas_5{
+	    top: -30px;
+		left: -50px;
+		position: absolute; 	  
+		-moz-transform:rotate(-10deg);
+		-moz-transition:-moz-transform .35s linear;
+		-webkit-transform:rotate(-10deg);
+		-webkit-transition:-webkit-transform .35s linear;
+		-o-transform:rotate(-10deg);
+		-o-transition:-o-transform .35s linear;
+		z-index:3;
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-webkit-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-o-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		box-shadow:10px 10px 7px rgba(0,0,0,.2);
+		border:8px solid white;
+		border-bottom:45px solid white;
+		}
+		
+		#myCanvas_6{
+	    top: 10px;
+		left: 30px;
+		position: absolute; 	  
+		-moz-transform:rotate(-6deg);
+		-moz-transition:-moz-transform .35s linear;
+		-webkit-transform:rotate(-6deg);
+		-webkit-transition:-webkit-transform .35s linear;
+		-o-transform:rotate(-6deg);
+		-o-transition:-o-transform .35s linear;
+		z-index:6;
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-webkit-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-o-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		box-shadow:10px 10px 7px rgba(0,0,0,.2);
+		border:8px solid white;
+		
+		}
+		
+		#myCanvas_7{
+	    top: -70px;
+		left: -340px;
+		position: absolute; 	  
+		-moz-transform:rotate(10deg);
+		-moz-transition:-moz-transform .35s linear;
+		-webkit-transform:rotate(10deg);
+		-webkit-transition:-webkit-transform .35s linear;
+		-o-transform:rotate(10deg);
+		-o-transition:-o-transform .35s linear;
+		z-index:3;
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-webkit-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-o-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		box-shadow:10px 10px 7px rgba(0,0,0,.2);
+		border:8px solid white;
+		z-index: 5;
+		}
+		
+		#myCanvas_8{
+	    top: -30px;
+		left: -230px;
+		position: absolute; 	  
+		-moz-transform:rotate(-12deg);
+		-moz-transition:-moz-transform .35s linear;
+		-webkit-transform:rotate(-12deg);
+		-webkit-transition:-webkit-transform .35s linear;
+		-o-transform:rotate(-12deg);
+		-o-transition:-o-transform .35s linear;	
+		
+		
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-webkit-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-o-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		box-shadow:10px 10px 7px rgba(0,0,0,.2);
+		border:8px solid white;
+		z-index:5;
+		border-bottom:45px solid white;
+		}
+		
+		
+		
+		#myCanvas_9{
+	    top: 350px;
+		left: 730px;
+		position: absolute; 	  
+		-moz-transform:rotate(-3deg);
+		-moz-transition:-moz-transform .35s linear;
+		-webkit-transform:rotate(-3deg);
+		-webkit-transition:-webkit-transform .35s linear;
+		-o-transform:rotate(-3deg);
+		-o-transition:-o-transform .35s linear;	
+		
+		
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-webkit-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-o-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		box-shadow:10px 10px 7px rgba(0,0,0,.2);
+		border:8px solid white;
+		z-index:7;
+		}
+		
+		#myCanvas_10{
+	    top: 260px;
+		left: 970px;
+		position: absolute; 	  
+		-moz-transform:rotate(-10deg);
+		-moz-transition:-moz-transform .35s linear;
+		-webkit-transform:rotate(-10deg);
+		-webkit-transition:-webkit-transform .35s linear;
+		-o-transform:rotate(-10deg);
+		-o-transition:-o-transform .35s linear;
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-webkit-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-o-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		box-shadow:10px 10px 7px rgba(0,0,0,.2);
+		border:8px solid white;
+		z-index:2;
+		
+		}
+		
+		#myCanvas_1:hover, #myCanvas_2:hover, #myCanvas_3:hover, #myCanvas_4:hover, #myCanvas_5:hover, #myCanvas_6:hover, #myCanvas_7:hover, #myCanvas_8:hover,#myCanvas_9:hover, #myCanvas_10:hover   {
+		
+		
+		box-shadow:10px 10px 7px rgba(0,0,0,.5);
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,.5);
+		-moz-transform: scale(1.15);
+		-webkit-box-shadow:10px 10px 7px rgba(0,0,0,.5);
+		-webkit-transform: scale(1.15);
+		-o-box-shadow:10px 10px 7px rgba(0,0,0,.5);
+		-o-transform: scale(1.15);
+		z-index:100;
+		}
+		
+		
+		
+		
+		
+		@font-face {
+		font-family: chalk;
+		src: url(DENNEthree-dee.ttf);
+		}
+		
+		
+		#text_title{
+		
+		
+		
+		z-index:15;
+		margin-top:2.6%;
+		width: 70%;
+		margin-left: auto;
+		margin-right: auto;
+		
+		
+		
+		}
+		
+		#text_title h1{
+		color: #ffe5ea;
+		font-size: 70px;
+		font-family: chalk;
+		text-align: center ;
+		
+		-webkit-animation: fadein 5s; /* Safari, Chrome and Opera > 12.1 */
+		-moz-animation: fadein 10s; /* Firefox < 16 */
+        -ms-animation: fadein 10s; /* Internet Explorer */
+		-o-animation: fadein 10s; /* Opera < 12.1 */
+		animation: fadein 10s;
+		
+		
+		}
+		
+		
+		@keyframes fadein {
+		from { opacity: 0; }
+		to   { opacity: 1; }
+		}
+		
+		/* Firefox < 16 */
+		@-moz-keyframes fadein {
+		from { opacity: 0; }
+		to   { opacity: 1; }
+		}
+		
+		/* Safari, Chrome and Opera > 12.1 */
+		@-webkit-keyframes fadein {
+		from { opacity: 0; }
+		to   { opacity: 1; }
+		}
+		
+		/* Internet Explorer */
+		@-ms-keyframes fadein {
+		from { opacity: 0; }
+		to   { opacity: 1; }
+		}
+		
+		/* Opera < 12.1 */
+		@-o-keyframes fadein {
+		from { opacity: 0; }
+		to   { opacity: 1; }
+		} 
+		
+		
+		</style>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		</head>
+		<body id="myBody">
+		
+		
+		
+		
+		<div id="includedContent"></div>
+		
+		
+		<div id="text_title"><h1>Edinburgh City Center</h1></div>
+		
+		
+		<div id="note_board">
+		
+		
+		
+		
+		
+		<ul id= "main">
+		<li>
+		<a href="#">
+		<canvas id="myCanvas_1" width="240" height="165"></canvas>
+		</a>
+		</li>
+		
+		<li>
+		<a href="#">
+		<canvas id="myCanvas_2" width="240" height="165"></canvas>
+		</a>
+		</li>
+		<li>
+		<a href="#">
+		<canvas id="myCanvas_3" width="165" height="240"></canvas>
+		</a>
+		</li>
+		<li>
+		<a href="#">
+		<canvas id="myCanvas_4" width="165" height="240"></canvas>
+		</a>
+		</li>
+		<li>
+		<a href="#">
+		<canvas id="myCanvas_5" width="210" height="210"></canvas>
+		</a>
+		</li>
+		<li>
+		<a href="#">
+		<canvas id="myCanvas_6" width="240" height="165"></canvas>
+		</a>
+		</li>
+		<li>
+		<a href="#">
+		<canvas id="myCanvas_7" width="165" height="240"></canvas>
+		</a>
+		</li>
+		<li>
+		<a href="#">
+		<canvas id="myCanvas_8" width="210" height="210"></canvas>
+		</a>
+		</li>
+		<li>
+		<a href="#">
+		<canvas id="myCanvas_9" width="240" height="165"></canvas>
+		</a>
+		</li>
+		<li>
+		<a href="#">
+		<canvas id="myCanvas_10" width="165" height="240"></canvas>
+		</a>
+		</li>
+		</ul>
+		</div>
+		
+		<div id="includedBottom"></div>
+		
+		<script>
+		
+		
+		var canvas_num = ["myCanvas_1", "myCanvas_2", "myCanvas_3","myCanvas_4", "myCanvas_5", "myCanvas_6","myCanvas_7", "myCanvas_8", "myCanvas_9", "myCanvas_10", "myCanvas_11"];
+		var top_table = [30,30,20,15,-1,300,330,300,300,400];
+		var left_table = [-1,245,340,480,780,450,190,-1,900,500];
+		
+		//add conteiner position
+		
+		
+		
+		
+		var width = $(window).width();
+		var height = $(window).height();
+		var temp_height =$("#note_board").height();
+		var temp_width =$("#note_board").width();
+		
+		//$("#container").css("left", width);
+		
+		
+		$("#note_board").width(width/1.65);
+		$("#note_board").height(height/1.93);
+		
+		var ori_height = $("#note_board").height();
+		var ori_width = $("#note_board").width();
+		
+		var klimaka_height= ori_height/temp_height;
+		var klimaka_width= ori_width/temp_width;
+		
+		
+		for(j = 0; j < 10; j++)
+		{
+		
+		var temp_height =$("#"+canvas_num[j]).height();
+		var temp_width =$("#"+canvas_num[j]).width();
+		
+		console.log(" -----window size-========="+temp_height);
+		
+		var top_first = top_table[j]*(height/5.84)/temp_height | 0;
+		var top_second = parseInt(top_first)+"px";
+		
+		var left_first = left_table[j]*(width/7.91)/temp_width | 0;
+		var left_second = parseInt(left_first)+"px";
+		
+		console.log("top_first value =-======" + top_first)
+		console.log("top value =-======'g'" + top_second)
+		
+		$("#"+canvas_num[j]).width(klimaka_width*temp_width| 0);
+		$("#"+canvas_num[j]).height(temp_height*klimaka_height | 0);
+		$("#"+canvas_num[j]).css("top", top_second);
+		$("#"+canvas_num[j]).css("left", left_second);
+		
+		}
+		
+		
+		//with a for we load photos and links and the links will call a function to redirect to appropriate url 
+		
+		var pictures = ["pic1.jpg", "pic2.jpg", "pic3.jpg","pic4.jpg", "pic5.jpg", "pic6.jpg","pic7.jpg", "pic8.jpg", "pic9.jpg", "pic10.jpg", "pic11.jpg"];
+		
+		var canvas = [];
+		var imageObj = new Array();
+		
+		
+		console.log("JSON_Loaded");
+		for(j = 0; j < 10; j++)
+		{
+		
+		imageObj[j] = new Image();
+		imageObj[j].src = pictures[j];
+		console.log(" ------------###"+j);
+		
+		if( j ==9 ){
+		
+		imageObj[j].onload = function() {
+		for(jj = 0; jj < 10; jj++){
+		console.log(" ------------"+jj);
+		canvas = document.getElementById(canvas_num[jj]);
+		
+		
+		context = canvas.getContext('2d'); 
+		context.drawImage(imageObj[jj], 0, 0, imageObj[jj].width, imageObj[jj].height,0,0, canvas.width, canvas.height);
+		
+		}
+		};
+		}
+		
+		}
+		
+		
+		$(function(){
+		$("#includedBottom").load("BottomBar.html"); 
+		});
+		
+		
+		
+		$(function(){
+		$("#includedContent").load("HomeBar.html"); 
+		});
+		
+		
+		// $("#scroll").css("top", "-10px");
+		
+		
+		</script>
+	</body>
+</html>     
+				

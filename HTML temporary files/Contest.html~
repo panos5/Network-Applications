@@ -1,0 +1,479 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+	 <meta charset="utf-8">
+	<title>LikeIt</title>
+
+
+    <style>
+	
+	 *       {
+            margin:  0;
+            padding: 0;
+            }
+	
+	
+     html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+	
+}
+
+#main
+{
+list-style-type: none;
+}
+
+
+#main li {
+    display:inline-block;
+    list-style-type:none;
+    margin-right:-4px;
+    padding:10px;
+}
+
+
+
+#myBody {
+ background-size: 100% 100%;
+width: 100%;
+height: 100%;
+background-image: url("blackwall.jpg");
+height: auto !important;
+}
+
+
+#note_board{
+
+ margin: auto;
+ 
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+
+
+     padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 1110px;
+	height: 500px;
+	z-index:0;
+
+   
+background-size: 100% 100%;
+	  }
+
+	   #myCanvas_1{
+	  position: absolute; 	  
+	   -moz-transition:-moz-transform .35s linear;
+	   -webkit-transition:-webkit-transform .35s linear;
+	   -o-transition:-o-transform .35s linear;	
+
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,1);
+		
+		box-shadow:10px 10px 7px rgba(0,0,0,1);
+    display: block;
+
+	background-size: 100% 100%;
+	  }
+	  	
+	
+		
+	#myCanvas_2{
+	    top: -60px;
+		left: -55px;
+	  position: absolute; 	  
+	   -moz-transition:-moz-transform .35s linear;
+	   -webkit-transition:-webkit-transform .35s linear;
+	   -o-transition:-o-transform .35s linear;	
+		z-index:4;
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,1.3);
+		box-shadow:10px 10px 7px rgba(0,0,0,1.3);
+		
+		background-size: 100% 100%;
+
+	  }
+	   #myCanvas_3{
+	    top: 10px;
+		left: -77px;
+	  position: absolute; 	  
+	   -moz-transition:-moz-transform .35s linear;
+	   -webkit-transition:-webkit-transform .35s linear;
+	   -o-transition:-o-transform .35s linear;	
+		z-index:3;
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,1);
+		box-shadow:10px 10px 7px rgba(0,0,0,1);
+	  }
+
+       #myCanvas_4{
+	    top: 40px;
+		left: -90px;
+	  position: absolute; 	  
+	   -moz-transition:-moz-transform .35s linear;
+	   -webkit-transition:-webkit-transform .35s linear;
+	   -o-transition:-o-transform .35s linear;	
+		z-index:3;
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,1);
+		box-shadow:10px 10px 7px rgba(0,0,0,1);
+		z-index:2;
+	  }
+	  
+	  #myCanvas_5{
+	    top: -30px;
+		left: -50px;
+	  position: absolute; 	  
+	   -moz-transition:-moz-transform .35s linear;
+	   -webkit-transition:-webkit-transform .35s linear;
+	   -o-transition:-o-transform .35s linear;	
+		z-index:3;
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,1);
+		box-shadow:10px 10px 7px rgba(0,0,0,1);
+	  }
+	  
+	  #myCanvas_6{
+	    top: 10px;
+		left: 30px;
+	  position: absolute; 	  
+	   -moz-transition:-moz-transform .35s linear;
+	   -webkit-transition:-webkit-transform .35s linear;
+	   -o-transition:-o-transform .35s linear;	
+		z-index:6;
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,1);
+		box-shadow:10px 10px 7px rgba(0,0,0,1);
+		
+	  }
+	  
+	 
+	 #myCanvas_7{
+	 top: 10px;
+		left: 50px;
+	 z-index: 45;
+	 	  position: absolute; 	  
+	-moz-transition:-moz-transform .35s linear;
+	   -webkit-transition:-webkit-transform .35s linear;
+	   -o-transition:-o-transform .35s linear;	
+
+	 }
+	 
+	 #myCanvas_8{
+	 top: 10px;
+		left: 30px;
+	 z-index: 45;
+	 	  position: absolute; 	  
+	   -moz-transition:-moz-transform .35s linear;
+	   -webkit-transition:-webkit-transform .35s linear;
+	   -o-transition:-o-transform .35s linear;	
+
+	 }
+		
+	  #myCanvas_1:hover,#myCanvas_2:hover, #myCanvas_3:hover, #myCanvas_4:hover, #myCanvas_5:hover, #myCanvas_6:hover  {
+	  
+	   box-shadow:10px 10px 7px rgba(0,0,0,.5);
+      -moz-box-shadow:10px 10px 7px rgba(0,0,0,.5);
+	  -moz-transform: scale(1.1);
+	  -webkit-transform: scale(1.1);	 
+	  -o-transform: scale(1.1);
+	 
+
+	  z-index:100;
+	  }
+	  
+	#myCanvas_7:hover, #myCanvas_8:hover{
+	  
+ 
+	  -moz-transform: scale(1.2);
+	  -webkit-transform: scale(1.2);	 
+	  -o-transform: scale(1.2);
+	  z-index:100;
+	  }
+
+
+
+@font-face {
+    font-family: chalk;
+    src: url(DENNEthree-dee.ttf);
+}
+	
+	
+#text_title{
+
+ 
+   
+     z-index:15;
+     margin-top:0.8%;
+    width: 50%;
+	 margin-left: auto;
+    margin-right: auto;
+	
+	 
+	 
+}
+
+#text_title h1{
+	 color: #ffe5ea;
+font-size: 60px;
+    font-family: chalk;
+	text-align: center ;
+
+}
+
+
+
+	
+	  
+    </style>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  </head>
+  <body id="myBody">
+  
+  
+  
+  
+   <div id="includedContent"></div>
+   
+  
+    <div id="text_title"><h1> This Week's Photos</h1></div>
+  
+  
+    <div id="note_board" >
+	
+
+
+
+	
+	<ul id= "main">
+    <li>
+      
+         <canvas id="myCanvas_1" width="320" height="180" onmouseover="show_text(0)" onmouseout="hide_text(0)" ondblclick="like_incr(0)"></canvas>
+      
+    </li>
+	
+	<li>
+      
+         <canvas id="myCanvas_2" width="320" height="180" onmouseover="show_text(1)" onmouseout="hide_text(1)" ondblclick="like_incr(1)"></canvas>
+     
+    </li>
+	<li>
+      
+         <canvas id="myCanvas_3" width="320" height="180" onmouseover="show_text(2)" onmouseout="hide_text(2)" ondblclick="like_incr(2)"></canvas>
+     
+    </li>
+	<li>
+     
+         <canvas id="myCanvas_4" width="320" height="180" onmouseover="show_text(3)" onmouseout="hide_text(3)" ondblclick="like_incr(3)"></canvas>
+     
+    </li>
+	<li>
+      
+         <canvas id="myCanvas_5" width="320" height="180" onmouseover="show_text(4)" onmouseout="hide_text(4)" ondblclick="like_incr(4)"></canvas>
+      
+    </li>
+	<li>
+     
+         <canvas id="myCanvas_6" width="320" height="180" onmouseover="show_text(5)" onmouseout="hide_text(5)" ondblclick="like_incr(5)"></canvas>
+     
+    </li>
+	<li>
+      
+         <canvas id="myCanvas_7" width="45" height="200" onclick="load_next()"></canvas>
+      
+    </li>
+	<li>
+      
+         <canvas id="myCanvas_8" width="45" height="200" onclick="load_prev()"></canvas>
+      
+    </li>
+	</ul>
+	</div>
+	
+	<div id="includedBottom"></div>
+	
+   
+    <script>
+
+	
+	var canvas_num = ["myCanvas_1", "myCanvas_2", "myCanvas_3","myCanvas_4", "myCanvas_5", "myCanvas_6", "myCanvas_7", "myCanvas_8"];
+	var top_table = [30,30,30,400,400,400,290,290];
+	var left_table = [0,800,1600,0,800,1600,430,-20];
+//set visibility
+document.getElementById('myCanvas_7').style.visibility = "visible";
+document.getElementById('myCanvas_8').style.visibility = "hidden";
+	
+	
+	var width = $(window).width();
+ 	var height = $(window).height();
+var temp_height =$("#note_board").height();
+var temp_width =$("#note_board").width();
+
+	
+$("#note_board").width(width/1.1);
+$("#note_board").height(height/1.4);
+
+var ori_height = $("#note_board").height();
+var ori_width = $("#note_board").width();
+
+var klimaka_height= ori_height/temp_height;
+var klimaka_width= ori_width/temp_width;
+
+
+$("#myCanvas_7").css("top", top_table[6]);
+$("#myCanvas_7").css("left", left_table[6]);
+$("#myCanvas_8").css("top", top_table[7]);
+$("#myCanvas_8").css("left", left_table[7]);
+
+
+for(j = 0; j < 8; j++)
+{
+
+var temp_height =$("#"+canvas_num[j]).height();
+var temp_width =$("#"+canvas_num[j]).width();
+
+var top_first = top_table[j]*(height/5.84)/temp_height | 0;
+var top_second = parseInt(top_first)+"px";
+
+var left_first = left_table[j]*(width/7.91)/temp_width | 0;
+var left_second = parseInt(left_first)+"px";
+
+if(j<6){
+$("#"+canvas_num[j]).width(klimaka_width*temp_width| 0);
+$("#"+canvas_num[j]).height(temp_height*klimaka_height | 0);
+}
+$("#"+canvas_num[j]).css("top", top_second);
+$("#"+canvas_num[j]).css("left", left_second);
+
+}
+
+
+	//with a for we load photos and links and the links will call a function to redirect to appropriate url 
+
+	var pictures = ["pic1.jpg", "pic2.jpg", "pic3.jpg","pic4.jpg", "pic5.jpg", "pic6.jpg","next_button.png","prev_button.png"];
+	var likes = [13,134,5,4,52,67];
+	var canvas = [];
+	var imageObj = new Array();
+
+	
+	for(j = 0; j < 8; j++)
+{
+       
+     imageObj[j] = new Image();
+imageObj[j].src = pictures[j];
+    
+	if( j ==7 ){
+
+      imageObj[j].onload = function() {
+	  for(jj = 0; jj < 8; jj++){
+	 canvas = document.getElementById(canvas_num[jj]);
+
+
+       context = canvas.getContext('2d'); 
+	  context.drawImage(imageObj[jj], 0, 0, imageObj[jj].width, imageObj[jj].height,0,0, canvas.width, canvas.height);
+
+	}
+	};
+	  }
+	 
+}
+
+
+function load_next(){
+
+	//query gia na parei tis epomenes eikones apo thn vash
+		 pictures = ["pic10.jpg", "pic11.jpg", "pic1.jpg","pic7.jpg", "pic8.jpg", "pic9.jpg"];
+		likes = [13,134,5,4,52,67];
+	
+	 console.log(" ------------pictures loaded");
+	 for(j = 0; j < 6; j++)
+	{
+	imageObj[j].src = pictures[j];
+
+	 canvas = document.getElementById(canvas_num[j]);
+     context = canvas.getContext('2d'); 
+	 context.drawImage(imageObj[j], 0, 0, imageObj[j].width, imageObj[j].height,0,0, canvas.width, canvas.height);
+	 }
+	 
+	 document.getElementById('myCanvas_7').style.visibility = "hidden";
+	 document.getElementById('myCanvas_8').style.visibility = "visible";
+
+}
+
+function load_prev(){
+	//query gia na parei tis proigoumenes eikones apo thn vash
+		 pictures = ["pic1.jpg", "pic2.jpg", "pic3.jpg","pic4.jpg", "pic5.jpg", "pic6.jpg"];
+		 likes = [19,13,57,41,2,127];
+
+	 console.log(" ------------pictures loaded");
+	 for(j = 0; j < 6; j++)
+	{
+	imageObj[j].src = pictures[j];
+
+	 canvas = document.getElementById(canvas_num[j]);
+     context = canvas.getContext('2d'); 
+	 context.drawImage(imageObj[j], 0, 0, imageObj[j].width, imageObj[j].height,0,0, canvas.width, canvas.height);
+	 }
+
+	  document.getElementById('myCanvas_7').style.visibility = "visible";
+	 document.getElementById('myCanvas_8').style.visibility = "hidden";
+
+
+
+}
+
+
+function show_text(x) {
+canvas = document.getElementById(canvas_num[x]);
+context = canvas.getContext('2d');
+context.clearRect(0, 0, canvas.width, canvas.height);
+context.globalAlpha=0.3; 
+imageObj[x].src = pictures[x];
+context.drawImage(imageObj[x], 0, 0, imageObj[x].width, imageObj[x].height,0,0, canvas.width, canvas.height);
+setup(x);
+
+}
+
+function setup(x)
+{
+
+canvas = document.getElementById(canvas_num[x]);
+context = canvas.getContext('2d');
+context.fillStyle = "#ffffff";
+context.globalAlpha=1; 
+context.font = 'italic  30px sans-serif';
+context.textBaseline = 'bottom';
+context.fillText(parseInt(likes[x]), 140, 110);
+context.font = 'italic  15px sans-serif';
+context.textBaseline = 'bottom';
+context.fillText("By Username", 10, 175);
+}
+
+function hide_text(x) {
+
+canvas = document.getElementById(canvas_num[x]);
+context = canvas.getContext('2d');
+context.clearRect(0, 0, canvas.width, canvas.height);
+imageObj[x].src = pictures[x];
+context.drawImage(imageObj[x], 0, 0, imageObj[x].width, imageObj[x].height,0,0, canvas.width, canvas.height);
+}
+
+function like_incr(x){
+
+likes[x]= likes[x] + 1;
+
+
+}
+
+
+ $(function(){
+      $("#includedContent").load("HomeBar.html"); 
+    });
+
+$(function(){
+      $("#includedBottom").load("BottomBar.html"); 
+    });
+	
+	  
+    </script>
+  </body>
+</html>     

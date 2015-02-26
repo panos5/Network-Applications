@@ -1,0 +1,255 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>LikeIt</title>
+		
+		
+		<style>
+			html, body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background-image: url("blackwall.jpg");
+			background-size: 100% 100%;
+			}
+			
+			#main
+			{
+			list-style-type: none;
+			}
+			
+			#main li {
+			display:inline-block;
+			list-style-type:none;
+			margin-right:-4px;
+			padding:10px;
+			}
+			
+			
+			
+			#myBody {
+			background-size: 100% 100%;
+			width: 100%;
+			height: 100%;
+			height: auto !important;
+		min-height:100%;
+		}
+		
+		
+		#note_board{
+		
+		margin: auto;
+		
+		position: absolute;
+		top: 0; left: 0; bottom: 0; right: 0;
+		
+		
+		padding-left: 0;
+		padding-right: 0;
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+		width: 1110px;
+		height: 500px;
+		z-index:0;
+		background-image: url("back.png");
+		-moz-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-webkit-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		-o-box-shadow:10px 10px 7px rgba(0,0,0,.3);
+		box-shadow:10px 10px 7px rgba(0,0,0,.2);
+		
+		background-size: 100% 100%;
+		}
+		
+		#dropbox {
+		
+		
+		margin: auto;
+		
+		position: absolute;
+		top: 0; left:0; bottom: 0; right: 30%;
+		
+		
+		
+		width: 300px;
+		height: 200px;
+		border: 2px solid #DDD;
+		-moz-border-radius: 8px;
+		-webkit-border-radius: 8px;
+		-o-border-radius: 8px;
+		background-color: #FEFFEC;
+		text-align: center;
+		color: #BBB;
+		font-size: 2em;
+		font-family: Arial, sans-serif;
+		}
+		
+		#preview{
+		width: 300px;
+		height: 200px;
+		margin: auto;
+		
+		position: absolute;
+		top: 0; left: 30%; bottom: 0; right:0;
+		
+		}
+		
+		#progressbar {
+		margin-left: 20px;
+		margin-right: 20px;
+		position: relative;
+		top: 75%;
+		}
+		
+		#droplabel {
+		position: relative;
+		top: 40%;
+		}
+		
+		
+		@font-face {
+		font-family: chalk;
+		src: url(DENNEthree-dee.ttf);
+		}
+		
+		
+		#text_title{
+		
+		
+		
+		z-index:15;
+		margin-top:0.8%;
+		width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+		
+		
+		
+		}
+		
+		#text_title h1{
+		color: #ffe5ea;
+		font-size: 60px;
+		font-family: chalk;
+		text-align: center ;
+		
+		}
+		
+		
+		</style>
+		<script src="http://www.google.com/jsapi?key=ABQIAAAADYbHHQrNWPElNtE4hn2g1hQhn5tTlmnhbGVHENfXgw8ik0kvARSWpfuAdtdt1KqinQpUokxB7SpcsQ"
+		type="text/javascript"></script>
+		<script type="text/javascript">
+		google.load("jquery", "1");
+		google.load("jqueryui", "1");
+		</script>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		</head>
+		<body id="myBody">
+		
+		
+		
+		
+		<div id="includedContent"></div>
+		
+		<div id="text_title"><h1>Upload Your Photo</h1></div>
+		
+		
+		
+		<div id="dropbox"><span id="droplabel">Drop file here...</span>
+		</div>
+		
+		<br/>
+		<img id="preview" src="preview.png" alt="Please use 16:9 dimensions for your photos"/>
+		
+		<div id="includedBottom"></div>
+		
+		<script>
+		
+		$(document).ready(function() {
+		var dropbox = document.getElementById("dropbox")
+		
+		// init event handlers
+		dropbox.addEventListener("dragenter", dragEnter, false);
+		dropbox.addEventListener("dragexit", dragExit, false);
+		dropbox.addEventListener("dragover", dragOver, false);
+		dropbox.addEventListener("drop", drop, false);
+		
+		
+		});
+		
+		function dragEnter(evt) {
+		evt.stopPropagation();
+		evt.preventDefault();
+		}
+		
+		function dragExit(evt) {
+		evt.stopPropagation();
+		evt.preventDefault();
+		}
+		
+		function dragOver(evt) {
+		evt.stopPropagation();
+		evt.preventDefault();
+		}
+		
+		function drop(evt) {
+		evt.stopPropagation();
+		evt.preventDefault();
+		
+		var files = evt.dataTransfer.files;
+		var count = files.length;
+		
+		// Only call the handler if 1 or more files was dropped.
+		if (count > 0)
+		handleFiles(files);
+		}
+		
+		
+		function handleFiles(files) {
+		var file = files[0];
+		// file.name for photos name
+		document.getElementById("droplabel").innerHTML = "Photo Uploaded Succesfully!!";
+		
+		var reader = new FileReader();
+		
+		// init the reader event handlers
+		reader.onprogress = handleReaderProgress;
+		reader.onloadend = handleReaderLoadEnd;
+		
+		// begin the read operation
+		reader.readAsDataURL(file);
+		}
+		
+		function handleReaderProgress(evt) {
+		if (evt.lengthComputable) {
+		var loaded = (evt.loaded / evt.total);
+		
+		}
+		}
+		
+		function handleReaderLoadEnd(evt) {
+		//edw einai h photografia GIA meta ;)
+		var img = document.getElementById("preview");
+		img.src = evt.target.result;
+		}
+		
+		
+		$(function(){
+		$("#includedContent").load("HomeBar.html"); 
+		});
+		
+		$(function(){
+		$("#includedBottom").load("BottomBar.html"); 
+		});
+		
+		
+		// $("#scroll").css("top", "-10px");
+		
+		
+		</script>
+	</body>
+</html>     
+				
