@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 Dwwdwdwdw
 Hello how
 Are you
 
 
 panossss
+=======
+dwwdwdwdw
+>>>>>>> parent of 1da2783... Update test file
